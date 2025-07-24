@@ -19,6 +19,10 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            display: flex; /* Make body a flex container */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            flex-direction: column; /* Stack content vertically */
         }
         
         .hearts {
@@ -51,6 +55,55 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            width: 100%; /* Ensure container takes full width */
+            max-width: 900px; /* Optional: limit max width for better readability */
+        }
+
+        /* Styles for the initial landing page */
+        #landingPage {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh; /* Make it full height */
+            width: 100%;
+            color: white;
+            padding: 20px;
+        }
+
+        #landingPage h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        #landingPage p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .love-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            margin-top: 30px; /* Add margin to separate from countdown */
+        }
+
+        .love-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
         }
         
         .main-title {
@@ -82,6 +135,8 @@
             margin: 30px 0;
             border: 1px solid rgba(255,255,255,0.2);
             box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            width: fit-content; /* Make it fit content on landing page */
+            max-width: 90%; /* Limit width on smaller screens */
         }
         
         .countdown {
@@ -222,10 +277,11 @@
         .voice-controls {
             display: flex; gap: 10px; justify-content: center; margin: 15px 0;
         }
-        .record-btn, .play-btn, .stop-btn {
+        .record-btn, .play-btn, .stop-btn, .upload-btn { 
             background: linear-gradient(45deg, #e74c3c, #c0392b); 
             color: white; border: none; padding: 8px 15px; 
             border-radius: 20px; cursor: pointer;
+            font-size: 0.9rem; 
         }
         .record-btn.recording { 
             background: linear-gradient(45deg, #27ae60, #2ecc71); 
@@ -249,16 +305,27 @@
                 margin: 20px 10px; 
             }
             .gift-box { padding: 20px; }
+
+            #landingPage h1 {
+                font-size: 3rem;
+            }
+            #landingPage p {
+                font-size: 1.2rem;
+            }
+            .love-button {
+                font-size: 1.8rem;
+                padding: 12px 30px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="hearts" id="hearts"></div>
     
-    <div class="container">
-        <h1 class="main-title">💖 Our Love Story 💖</h1>
-        <p class="subtitle">Celebrating 1 Year of Pure Magic</p>
-        
+    <div id="landingPage">
+        <h1>Welcome, My Love!</h1>
+        <p>A special surprise awaits you...</p>
+
         <div class="countdown-container">
             <h2 style="color: white; margin-bottom: 20px; font-family: 'Dancing Script', cursive; font-size: 2rem;">Time Until Our Special Day!</h2>
             <div class="countdown" id="countdown">
@@ -280,6 +347,13 @@
                 </div>
             </div>
         </div>
+
+        <button class="love-button" onclick="showMainContent()">💖 I Love You 💖</button>
+    </div>
+
+    <div class="container" id="mainContent" style="display: none;">
+        <h1 class="main-title">💖 Our Love Story 💖</h1>
+        <p class="subtitle">Celebrating 1 Year of Pure Magic</p>
         
         <h2 style="color: white; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin: 30px 0 20px 0;">🎁 Your Anniversary Gifts 🎁</h2>
         <p style="color: rgba(255,255,255,0.8); margin-bottom: 30px;">Click on each gift to unlock your surprise, meri jaan! 💕</p>
@@ -292,11 +366,11 @@
                 <button class="unlock-btn">Unlock Gift 💖</button>
                 <div class="gift-content" id="gift1">
                     <h3 style="color: #ee5a6f; font-family: 'Dancing Script', cursive; font-size: 1.5rem; margin-bottom: 15px;">To My Milli Billi Meow Sinha 🐱</h3>
-                    <p><strong>1 saal pehle tak soche bhi nhi the ki kisi ki sirf awaaz… dil ko itna sukoon de sakti hai.</strong></p>
+                    <p><strong>1 saal pehle tak soche bhi nhi थे ki kisi ki sirf awaaz… dil ko itna sukoon de sakti hai.</strong></p>
                     <br>
-                    <p>Woh pehla call jis din tmhra birthday tha usi din hum tmko sune the... woh call pe thda der ka baat se humko lga tha ki kch toh alag hai tum me ✨</p>
+                    <p>Woh pehla call jis din tmhra birthday tha usi din hum tmko sune थे... woh call pe thda der ka baat se humko lga tha ki kch toh alag hai tum me ✨</p>
                     <br>
-                    <p>Tumse milne ka koi chance nahi bacha tha… par shayad taqdeer thi bhgwn ji likhe the hmlg ka milna. 🌟</p>
+                    <p>Tumse milne ka koi chance nahi bacha tha… par shayad taqdeer thi bhgwn ji likhe थे hmlg ka milna. 🌟</p>
                     <br>
                     <p><em>Tu sirf meri wyf, lyf partner nahi — meri aadat, meri zarurat, mera sukoon ban gayi hai. 💕</em></p>
                     <br>
@@ -315,7 +389,7 @@
                     <br>
                     <p><strong>🖐️ 8 September:</strong> Jab tum mehndi mein mera naam likhi thi - woh sirf ek mehndi wala hath nahi thi… meri zindagi ka sabse khoobsurat hissa tha</p>
                     <br>
-                    <p><strong>💋 31 December:</strong> Viharilal mein firse mile the, first time lip kiss hua tha, kitna saara acha memory banaye the!</p>
+                    <p><strong>💋 31 December:</strong> Viharilal mein firse mile the, first time lip kiss hua tha, kitna saara acha memory banaye थे!</p>
                     <br>
                     <p><strong>🙏 2 February:</strong> Sarswati puja ka din - tu gussa mein bhaag gayi thi, kitni mehnat se manaya tha tumko!</p>
                     <br>
@@ -329,58 +403,42 @@
                 <div class="gift-preview">Something special for your ears...</div>
                 <button class="unlock-btn">Play Message 🎧</button>
                 <div class="gift-content" id="gift3">
-                    <h3 style="color: #ee5a6f; font-family: 'Dancing Script', cursive; font-size: 1.5rem; margin-bottom: 15px;">Audio Message Script 🎵</h3>
-                    <div style="background: #f0f0f0; padding: 15px; border-radius: 10px; border-left: 4px solid #ee5a6f;">
+                    <h3 style="color: #ee5a6f; font-family: 'Dancing; Script', cursive; font-size: 1.5rem; margin-bottom: 15px;">Voice Message 🎵</h3>
+                    
+                    <div style="background: rgba(0,0,0,0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                        <h4 style="color: #ee5a6f; margin-bottom: 10px;">🎵 Special Message for You:</h4>
+                        <audio controls id="githubAudioPlayer" style="width: 100%;">
+                            <source src="https://raw.githubusercontent.com/anubhavboyz/anneivarsary/main/voicerecord.mp3" type="audio/mp3">
+                            Your browser does not support audio.
+                        </audio>
+                    </div>
+                    
+                    <div style="background: #f0f0f0; padding: 15px; border-radius: 10px; border-left: 4px solid #ee5a6f; margin-top: 15px;">
+                        <h4>💡 Message Script Suggestion:</h4>
                         <p><em>"Hey meri jaan, milli billi meow sinha 😂"</em></p>
-                        <br>
                         <p><em>"Pehle toh Happy 1st Anniversary baby! ❤️"</em></p>
-                        <br>
                         <p><em>"Yaad hai pehla call? Usi din se tmhari awaaz mera addiction ban gayi thi... aur aaj 1 saal baad, abhi bhi tmhari awaaz sun ke dil mein butterflies aa jaate hain. 🦋"</em></p>
-                        <br>
                         <p><em>"Promise karta hun tumse - aage ke saare years bhi aise hi celebrate karenge. I love you so much yaar ❤️"</em></p>
                     </div>
-                    <p style="margin-top: 15px;"><strong>📱 Record this message in your voice and send it to her!</strong></p>
-                   <div class="gift-content" id="gift3">
-    <h3 style="color: #ee5a6f; font-family: 'Dancing Script', cursive; font-size: 1.5rem; margin-bottom: 15px;">Voice Message 🎵</h3>
-    
-    <!-- Your GitHub Audio -->
-    <div style="background: rgba(0,0,0,0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <h4 style="color: #ee5a6f; margin-bottom: 10px;">🎵 Special Message for You:</h4>
-        <audio controls style="width: 100%;">
-            <source src="YOUR_GITHUB_LINK_HERE.mp3" type="audio/mpeg">
-            <source src="YOUR_GITHUB_LINK_HERE.wav" type="audio/wav">
-            Your browser does not support audio.
-        </audio>
-    </div>
-    
-    <!-- Script suggestion (original content) -->
-    <div style="background: #f0f0f0; padding: 15px; border-radius: 10px; border-left: 4px solid #ee5a6f; margin-top: 15px;">
-        <h4>💡 Message Script Suggestion:</h4>
-        <p><em>"Hey meri jaan, milli billi meow sinha 😂"</em></p>
-        <p><em>"Pehle toh Happy 1st Anniversary baby! ❤️"</em></p>
-        <p><em>"Yaad hai pehla call? Usi din se tmhari awaaz mera addiction ban gayi thi... aur aaj 1 saal baad, abhi bhi tmhari awaaz sun ke dil mein butterflies aa jaate hain. 🦋"</em></p>
-        <p><em>"Promise karta hun tumse - aage ke saare years bhi aise hi celebrate karenge. I love you so much yaar ❤️"</em></p>
-    </div>
-</div>
-                    <!-- Voice Recording Section -->
+
+                    <p style="margin-top: 15px;"><strong>📱 Record your own message below!</strong></p>
                     <div class="voice-controls">
                         <button class="record-btn" id="recordBtn" onclick="toggleRecording()">
-                            🎤 Start Recording  
+                            🎤 Start Recording  
                         </button>
-                        <button class="play-btn" id="playBtn" onclick="playRecording()" style="display: none;">
-                            ▶️ Play
+                        <button class="play-btn" id="playRecordedBtn" onclick="playRecording()" style="display: none;">
+                            ▶️ Play Recorded
                         </button>
-                        <button class="stop-btn" id="stopBtn" onclick="stopPlayback()" style="display: none;">
-                            ⏹️ Stop
+                        <button class="stop-btn" id="stopRecordedBtn" onclick="stopPlayback()" style="display: none;">
+                            ⏹️ Stop Playback
                         </button>
                     </div>
                     
                     <div class="recording-status" id="recordingStatus"></div>
-                    <div class="audio-player" id="audioPlayer"></div>
+                    <div class="audio-player" id="recordedAudioPlayer"></div>
                     
-                    <!-- File Upload Option -->
                     <input type="file" id="audioFile" accept="audio/*" onchange="handleAudioUpload(event)" style="display: none;">
-                    <label for="audioFile" style="background: #3498db; color: white; padding: 8px 15px; border-radius: 20px; cursor: pointer;">📁 Upload Audio</label>
+                    <label for="audioFile" class="upload-btn" style="background: #3498db;">📁 Upload Audio</label>
                 </div>
             </div>
             
@@ -426,6 +484,13 @@
     </div>
 
     <script>
+        // Function to show the main content and hide the landing page
+        function showMainContent() {
+            document.getElementById('landingPage').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'flex'; // Use flex to maintain centering
+            // updateCountdown(); // No need to call here, it runs automatically on landing page
+        }
+
         // Create floating hearts
         function createHeart() {
             const heart = document.createElement('div');
@@ -445,12 +510,16 @@
         setInterval(createHeart, 2000);
         
         // Countdown Timer
+        let countdownInterval; // Declare interval variable
         function updateCountdown() {
             // Set anniversary date to July 25, 2025
             const anniversaryDate = new Date('2025-07-25T00:00:00').getTime();
             const now = new Date().getTime();
             const distance = anniversaryDate - now;
             
+            const countdownElement = document.getElementById('countdown');
+            const countdownContainerH2 = document.querySelector('.countdown-container h2');
+
             if (distance > 0) {
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -463,14 +532,14 @@
                 document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
             } else {
                 // Anniversary reached!
-                document.querySelector('.countdown-container h2').textContent = 'Happy 1st Anniversary! 🎉💖';
-                document.getElementById('countdown').innerHTML = '<div style="font-size: 2rem; color: white;">🎊 IT\'S OUR SPECIAL DAY! 🎊</div>';
+                if (countdownContainerH2) countdownContainerH2.textContent = 'Happy 1st Anniversary! 🎉💖';
+                if (countdownElement) countdownElement.innerHTML = '<div style="font-size: 2rem; color: white;">🎊 IT\'S OUR SPECIAL DAY! 🎊</div>';
+                clearInterval(countdownInterval); // Stop the interval when countdown finishes
             }
         }
         
-        // Update countdown every second
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+        // Update countdown every second (runs immediately on page load)
+        countdownInterval = setInterval(updateCountdown, 1000); 
         
         // Gift opening function
         function openGift(giftNumber, element) {
@@ -483,6 +552,14 @@
                 button.textContent = 'Opened! 💖';
                 button.style.background = 'linear-gradient(45deg, #4caf50, #45a049)';
                 
+                // If it's the voice message gift, ensure GitHub audio starts playing
+                if (giftNumber === 3) {
+                    const githubAudio = document.getElementById('githubAudioPlayer');
+                    if (githubAudio) {
+                        githubAudio.play();
+                    }
+                }
+
                 // Create celebration effect
                 createCelebration();
             }
@@ -515,7 +592,7 @@
         
         // Click anywhere for hearts effect
         document.addEventListener('click', function(e) {
-            if (e.target.closest('.gift-box')) return; // Don't trigger on gift boxes
+            if (e.target.closest('.gift-box') || e.target.closest('.love-button')) return; // Don't trigger on gift boxes or love button
             
             const colors = ['💖', '💕', '💝', '💗', '🌟', '✨'];
             const emoji = colors[Math.floor(Math.random() * colors.length)];
@@ -535,39 +612,109 @@
             setTimeout(() => {
                 floatingEmoji.remove();
             }, 2000);
-            let mediaRecorder, audioChunks = [], isRecording = false;
-        
+        });
+
+        // --- Voice Recording Logic ---
+        let mediaRecorder;
+        let audioChunks = [];
+        let recordedAudioBlob; // To store the recorded audio blob
+        let recordedAudioElement; // To store the audio element for playback
+        let isRecording = false;
+
+        const recordBtn = document.getElementById('recordBtn');
+        const playRecordedBtn = document.getElementById('playRecordedBtn');
+        const stopRecordedBtn = document.getElementById('stopRecordedBtn');
+        const recordedAudioPlayerDiv = document.getElementById('recordedAudioPlayer');
+        const recordingStatus = document.getElementById('recordingStatus');
+
         async function toggleRecording() {
             if (!isRecording) {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                mediaRecorder = new MediaRecorder(stream);
-                audioChunks = [];
-                mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
-                mediaRecorder.onstop = () => {
-                    const blob = new Blob(audioChunks, { type: 'audio/wav' });
-                    displayAudioPlayer(URL.createObjectURL(blob));
-                };
-                mediaRecorder.start();
-                isRecording = true;
-                document.getElementById('recordBtn').textContent = '⏹️ Stop';
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    audioChunks = [];
+                    recordedAudioBlob = null; // Reset previous recording
+                    recordedAudioPlayerDiv.innerHTML = ''; // Clear previous player
+                    playRecordedBtn.style.display = 'none';
+                    stopRecordedBtn.style.display = 'none';
+
+                    mediaRecorder.ondataavailable = e => {
+                        if (e.data.size > 0) {
+                            audioChunks.push(e.data);
+                        }
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        recordedAudioBlob = new Blob(audioChunks, { type: 'audio/webm' }); 
+                        displayRecordedAudioPlayer(URL.createObjectURL(recordedAudioBlob));
+                        recordingStatus.textContent = 'Recording finished!';
+                        recordBtn.textContent = '🎤 Start Recording';
+                        recordBtn.classList.remove('recording');
+                        playRecordedBtn.style.display = 'inline-block';
+                        stopRecordedBtn.style.display = 'none'; 
+                    };
+
+                    mediaRecorder.onstart = () => {
+                        recordingStatus.textContent = 'Recording...';
+                        recordBtn.textContent = '⏹️ Stop Recording';
+                        recordBtn.classList.add('recording');
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                } catch (err) {
+                    console.error('Error accessing microphone:', err);
+                    recordingStatus.textContent = 'Error: Microphone access denied or unavailable.';
+                }
             } else {
-                mediaRecorder.stop();
+                if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                    mediaRecorder.stop();
+                }
                 isRecording = false;
-                document.getElementById('recordBtn').textContent = '🎤 Record';
             }
         }
-        
-        function displayAudioPlayer(url) {
-            const player = document.getElementById('audioPlayer');
-            player.innerHTML = `<audio controls><source src="${url}"></audio>`;
-            player.classList.add('active');
+
+        function displayRecordedAudioPlayer(url) {
+            recordedAudioPlayerDiv.innerHTML = `<audio controls id="userRecordedAudio"><source src="${url}" type="audio/webm"></audio>`;
+            recordedAudioElement = document.getElementById('userRecordedAudio');
+            recordedAudioPlayerDiv.classList.add('active');
+
+            recordedAudioElement.onplay = () => {
+                playRecordedBtn.style.display = 'none';
+                stopRecordedBtn.style.display = 'inline-block';
+            };
+            recordedAudioElement.onpause = recordedAudioElement.onended = () => {
+                playRecordedBtn.style.display = 'inline-block';
+                stopRecordedBtn.style.display = 'none';
+            };
         }
-        
+
         function playRecording() {
-            const audio = document.querySelector('#audioPlayer audio');
-            if (audio) audio.play();
+            if (recordedAudioElement) {
+                recordedAudioElement.play();
+            } else {
+                recordingStatus.textContent = 'No recording found. Please record first.';
+            }
         }
-        });
+
+        function stopPlayback() {
+            if (recordedAudioElement) {
+                recordedAudioElement.pause();
+                recordedAudioElement.currentTime = 0; 
+            }
+        }
+
+        function handleAudioUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const url = URL.createObjectURL(file);
+                displayRecordedAudioPlayer(url);
+                recordingStatus.textContent = `Uploaded: ${file.name}`;
+                recordBtn.style.display = 'none'; 
+                playRecordedBtn.style.display = 'inline-block';
+                stopRecordedBtn.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
